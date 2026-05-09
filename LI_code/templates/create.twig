@@ -1,0 +1,31 @@
+{% extends 'layout.twig' %}
+
+{% block content %}
+
+<h1>Create Recipe</h1>
+
+<form method="POST" action="create.php">
+
+    <input type="text" name="title" placeholder="Title" required><br><br>
+
+    <textarea name="ingredients" placeholder="Ingredients" required></textarea><br><br>
+
+    <textarea name="instructions" placeholder="Instructions" required></textarea><br><br>
+
+    <input type="text" name="category" placeholder="Category" required><br><br>
+
+    <input type="number" name="prep_time" placeholder="Prep time"><br><br>
+
+    <select name="difficulty">
+        <option value="easy">Easy</option>
+        <option value="medium">Medium</option>
+        <option value="hard">Hard</option>
+    </select><br><br>
+
+    <input type="text" name="author" placeholder="Author"><br><br>
+
+    <button type="submit">Create</button>
+
+</form>
+
+{% endblock %}

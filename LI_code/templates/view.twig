@@ -1,0 +1,38 @@
+{% extends 'layout.twig' %}
+
+{% block content %}
+
+{% if recipe %}
+
+    <h1>{{ recipe.title }}</h1>
+
+    <p><strong>Category:</strong> {{ recipe.category }}</p>
+    <p><strong>Author:</strong> {{ recipe.author }}</p>
+    <p><strong>Prep time:</strong> {{ recipe.prep_time }} min</p>
+    <p><strong>Difficulty:</strong> {{ recipe.difficulty }}</p>
+    <a href="edit.php?id={{ recipe.id }}">Edit</a>
+    <a href="delete.php?id={{ recipe.id }}"
+       onclick="return confirm('Delete this recipe?');">
+       Delete
+    </a>
+
+    <hr>
+
+    <h3>Ingredients</h3>
+    <p>{{ recipe.ingredients }}</p>
+
+    <h3>Instructions</h3>
+    <p>{{ recipe.instructions }}</p>
+
+    <hr>
+
+    <p><strong>Views:</strong> {{ views|default(0) }}</p>
+
+{% else %}
+
+    <h2>Recipe not found</h2>
+    <a href="index.php">Back to list</a>
+
+{% endif %}
+
+{% endblock %}

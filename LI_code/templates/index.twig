@@ -1,0 +1,39 @@
+{% extends 'layout.twig' %}
+
+{% block content %}
+
+<h1>Recipes</h1>
+
+<a href="create.php">Add Recipe</a>
+
+<table border="1" cellpadding="8">
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Category</th>
+        <th>Actions</th>
+    </tr>
+
+    {% for recipe in recipes %}
+        <tr>
+            <td>{{ recipe.id }}</td>
+            <td>{{ recipe.title }}</td>
+            <td>{{ recipe.category }}</td>
+            <td>
+                <a href="view.php?id={{ recipe.id }}">View</a>
+                <a href="delete.php?id={{ recipe.id }}"
+                   onclick="return confirm('Are you sure you want to delete this recipe?');">
+                    Delete
+                </a>
+                <a href="edit.php?id={{ recipe.id }}">Edit</a>
+            </td>
+        </tr>
+    {% else %}
+        <tr>
+            <td colspan="4">No recipes found</td>
+        </tr>
+    {% endfor %}
+
+</table>
+
+{% endblock %}

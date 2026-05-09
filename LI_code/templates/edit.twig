@@ -1,0 +1,31 @@
+{% extends 'layout.twig' %}
+
+{% block content %}
+
+<h1>Edit Recipe</h1>
+
+<form method="POST" action="edit.php?id={{ recipe.id }}">
+
+    <input type="text" name="title" value="{{ recipe.title }}" required><br><br>
+
+    <textarea name="ingredients">{{ recipe.ingredients }}</textarea><br><br>
+
+    <textarea name="instructions">{{ recipe.instructions }}</textarea><br><br>
+
+    <input type="text" name="category" value="{{ recipe.category }}"><br><br>
+
+    <input type="number" name="prep_time" value="{{ recipe.prep_time }}"><br><br>
+
+    <select name="difficulty">
+        <option value="easy" {% if recipe.difficulty == 'easy' %}selected{% endif %}>Easy</option>
+        <option value="medium" {% if recipe.difficulty == 'medium' %}selected{% endif %}>Medium</option>
+        <option value="hard" {% if recipe.difficulty == 'hard' %}selected{% endif %}>Hard</option>
+    </select><br><br>
+
+    <input type="text" name="author" value="{{ recipe.author }}"><br><br>
+
+    <button type="submit">Update</button>
+
+</form>
+
+{% endblock %}
